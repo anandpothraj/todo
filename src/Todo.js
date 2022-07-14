@@ -4,6 +4,7 @@ import Header from './components/Header';
 import AddTodo from './components/AddTodo';
 import Filter from './components/Filter';
 import SingleTodo from './components/SingleTodo';
+import Pagination from './components/Pagination';
 
 const Todo = () => {
 
@@ -16,6 +17,11 @@ const Todo = () => {
     const [ completed, setCompleted ] = useState(false);
     const [ onhold, setOnHold ] = useState(false);
     const [ urgent, setUrgent ] = useState(false);
+    const todosPerPage = 5;
+    const [ currentPage, setCurrentPage ] = useState(1);
+
+    const lastTodoIndex = currentPage * todosPerPage;
+    const firstTodoIndex = lastTodoIndex - todosPerPage;
 
 
     const Todo = useSelector((state) => state.Todo);
@@ -27,18 +33,20 @@ const Todo = () => {
         setSelectedId(id);
     }
 
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <div className='todoContainer'>
             <Header value={search} setSearch={setSearch} />
             <AddTodo showEditButton={showEditButton} setShowEditButton={setShowEditButton} task={task} setTask={setTask} selectedId={selectedId} setSelectedId={setSelectedId}/>
             <Filter setNewToOld={setNewToOld} setOldToNew={setOldToNew} setCompleted={setCompleted} newToOld={newToOld} 
-                oldToNew={oldToNew} completed={completed} onhold={onhold} setOnHold={setOnHold} urgent={urgent} setUrgent={setUrgent}/>
+                oldToNew={oldToNew} completed={completed} onhold={onhold} setOnHold={setOnHold} urgent={urgent} setUrgent={setUrgent} setCurrentPage={setCurrentPage}/>
             <ul className="taskList">
                 { 
                     todos && newToOld &&
                     todos.filter((todo) =>
                     todo.task.toLowerCase().includes(search.toLowerCase())
-                    ).map((todo) => (
+                    ).slice(firstTodoIndex,lastTodoIndex).map((todo) => (
                         <SingleTodo todo={todo} showEditButton={showEditButton}  editTodo={editTodo} key={todo.id} />
                     ))
                 }
@@ -47,7 +55,7 @@ const Todo = () => {
                     todos.filter((todo) =>
                     todo.task.toLowerCase().includes(search.toLowerCase())
                     ).reverse()
-                    .map((todo) => (
+                    .slice(firstTodoIndex,lastTodoIndex).map((todo) => (
                         <SingleTodo todo={todo} showEditButton={showEditButton}  editTodo={editTodo} key={todo.id} />
                     ))
                 }
@@ -55,8 +63,8 @@ const Todo = () => {
                     todos && completed &&
                     todos.filter((todo) =>
                     todo.task.toLowerCase().includes(search.toLowerCase()) && todo.status.toLowerCase().includes("completed")
-                    ).reverse()
-                    .map((todo) => (
+                    )
+                    .slice(firstTodoIndex,lastTodoIndex).map((todo) => (
                         <SingleTodo todo={todo} showEditButton={showEditButton}  editTodo={editTodo} key={todo.id} />
                     ))
                 }
@@ -64,8 +72,8 @@ const Todo = () => {
                     todos && onhold &&
                     todos.filter((todo) =>
                     todo.task.toLowerCase().includes(search.toLowerCase()) && todo.status.toLowerCase().includes("onhold")
-                    ).reverse()
-                    .map((todo) => (
+                    )
+                    .slice(firstTodoIndex,lastTodoIndex).map((todo) => (
                         <SingleTodo todo={todo} showEditButton={showEditButton}  editTodo={editTodo} key={todo.id} />
                     ))
                 }
@@ -73,13 +81,14 @@ const Todo = () => {
                     todos && urgent &&
                     todos.filter((todo) =>
                     todo.task.toLowerCase().includes(search.toLowerCase()) && todo.status.toLowerCase().includes("urgent")
-                    ).reverse()
-                    .map((todo) => (
+                    )
+                    .slice(firstTodoIndex,lastTodoIndex).map((todo) => (
                         <SingleTodo todo={todo} showEditButton={showEditButton}  editTodo={editTodo} key={todo.id} />
                     ))
                 }
 
             </ul>
+            <Pagination todosPerPage={todosPerPage} totalTodos={todos.length} paginate={paginate} currentPage={currentPage}/>
         </div>
     )
     }

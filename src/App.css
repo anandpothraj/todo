@@ -179,6 +179,7 @@ body{
     list-style: none;
     padding: 0;
     width: 100%;
+    min-height: 30vh;
 }
 
 .taskListItem{
@@ -287,6 +288,41 @@ input:checked {
     cursor: pointer;
 }
 
+.pageSpan{
+    margin: 5px auto;
+    padding: 0px;
+    color: gray;
+    font-size: 15px;
+}
+
+.pagination{
+    background-color: #191933;
+    display: flex;
+    justify-content: flex-start;
+    height: 5vh;
+    border: 0.1px solid white;
+    border-radius: 10px;
+}
+
+.pageItem{
+    list-style: none;
+    margin: auto 10px;
+
+}
+
+.pageLink{
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    border: 0.1px solid gray;
+    cursor:pointer;
+}
+
+.activePage{
+    background-color: white;
+    color: black;
+}
+
 @media screen and (max-width: 1200px) {
     .taskListItemLabel{
         width: 80%;
@@ -380,7 +416,6 @@ input:checked {
         width:80%;
     }
     .logoDiv{
-        flex-direction: column;
         margin-left: 5%;
         width: 15%;
         align-items: center;

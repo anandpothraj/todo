@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Filter = ({newToOld,setNewToOld,oldToNew,setOldToNew,completed,setCompleted,onhold,setOnHold,urgent,setUrgent}) => {
+const Filter = ({newToOld,setNewToOld,oldToNew,setOldToNew,completed,setCompleted,onhold,setOnHold,urgent,setUrgent,setCurrentPage}) => {
 
   const showNewToOld = () => {
     setNewToOld(true);
@@ -8,6 +8,7 @@ const Filter = ({newToOld,setNewToOld,oldToNew,setOldToNew,completed,setComplete
     setCompleted(false);
     setOnHold(false);
     setUrgent(false);
+    setCurrentPage(1);
   }
 
   const showOldToNew = () => {
@@ -16,6 +17,7 @@ const Filter = ({newToOld,setNewToOld,oldToNew,setOldToNew,completed,setComplete
     setCompleted(false);
     setOnHold(false);
     setUrgent(false);
+    setCurrentPage(1);
   }
 
   const showCompleted = () => {
@@ -24,6 +26,7 @@ const Filter = ({newToOld,setNewToOld,oldToNew,setOldToNew,completed,setComplete
     setCompleted(true);
     setOnHold(false);
     setUrgent(false);
+    setCurrentPage(1);
   }
   const showOnHold = () => {
     setCompleted(false);
@@ -31,6 +34,7 @@ const Filter = ({newToOld,setNewToOld,oldToNew,setOldToNew,completed,setComplete
     setOldToNew(false);
     setOnHold(true);
     setUrgent(false);
+    setCurrentPage(1);
   }
 
   const showUrgent = () => {
@@ -39,6 +43,7 @@ const Filter = ({newToOld,setNewToOld,oldToNew,setOldToNew,completed,setComplete
     setOldToNew(false);
     setOnHold(false);
     setUrgent(true);
+    setCurrentPage(1);
   }
 
   return (
