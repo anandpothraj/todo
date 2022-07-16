@@ -11,22 +11,23 @@ const AddTodo = ({showEditButton,setShowEditButton, task, setTask , selectedId, 
   const status = "normal";
 
   const addTodo = (e) => {
-    e.preventDefault();
-    if(!task){
-        alert('Plz fill the task')
+
+        e.preventDefault();
+        if(!task){
+            alert('Plz fill the task')
+        }
+        else if(task && showEditButton){
+            dispatch(updateTodo(selectedId,task));
+            setTask("");
+            setShowEditButton(false);
+            setSelectedId(null);
+        }
+        else{
+            dispatch(createTodo(id,task,status));
+            setId(id+1);
+            setTask("");
+        }
     }
-    else if(task && showEditButton){
-        dispatch(updateTodo(selectedId,task));
-        setTask("");
-        setShowEditButton(false);
-        setSelectedId(null);
-    }
-    else{
-        dispatch(createTodo(id,task,status));
-        setId(id+1);
-        setTask("");
-    }
-}
 
   return (
     <>

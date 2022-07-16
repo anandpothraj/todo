@@ -4,7 +4,8 @@ import {
     UPDATE_TODO,
     TASK_COMPLETED,
     TASK_ONHOLD,
-    TASK_URGENT
+    TASK_URGENT,
+    DELETE_ALL
  } from './todoConstants';
 
 export const TodoReducer = (state = { todos: [] }, action) => {
@@ -95,6 +96,12 @@ export const TodoReducer = (state = { todos: [] }, action) => {
                 ...state,
                 todos:urgentTodo
             }; 
+
+    case DELETE_ALL:
+         return {
+            ...state,
+            todos:[]
+         }
 
     default:
     return state;

@@ -4,7 +4,8 @@ import {
     UPDATE_TODO,
     TASK_COMPLETED,
     TASK_ONHOLD,
-    TASK_URGENT
+    TASK_URGENT,
+    DELETE_ALL
  } from './todoConstants';
 
 
@@ -71,3 +72,8 @@ export const urgentStatus = (id) => (dispatch) => {
     });
 }
 
+export const deleteAll = () => ( dispatch ) => {
+    dispatch({
+        type: DELETE_ALL
+    })
+}

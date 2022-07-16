@@ -152,6 +152,7 @@ body{
     color: white;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
+    cursor: pointer;
 }
             
 .wrapper .active {
@@ -323,6 +324,32 @@ input:checked {
     color: black;
 }
 
+.deleteSpan{
+    margin:10px
+}
+
+.deleteAllBtn{
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 1200px) {
     .taskListItemLabel{
         width: 80%;
@@ -368,7 +395,7 @@ input:checked {
 
     .todoContainer{
         min-width: 90vw;
-        min-height: 90vh;
+        min-height: auto;
         padding: 20px;
     }
 
@@ -383,11 +410,14 @@ input:checked {
     .heading{
         display: block;
         text-align: center;
+        font-size: 18px;
+        margin: 0px auto;
+        padding: 0px;
     }
 
     .search{
         min-width: 100%;
-        margin-top: 5px;
+        margin: 0px;
         height: 30px;
     }
 
@@ -401,6 +431,10 @@ input:checked {
         height: auto;
     }
 
+    .addTask{
+        margin: 0px;
+    }
+
     .addTaskInput{
         width: 80%;
     }
@@ -408,16 +442,23 @@ input:checked {
     .btnDiv{
         width: 15%;
     }
+    .filterContainer{
+        margin: 0px;
+    }
     
     .addFilter{
         font-size: 12px;
+    }
+    .taskListItem{
+        margin-bottom: 10px;
+        padding: 4px;
     }
     .taskListItemLabel{
         width:80%;
     }
     .logoDiv{
         margin-left: 5%;
-        width: 15%;
+        width: 20%;
         align-items: center;
     }
     .holdLogo{
@@ -428,6 +469,17 @@ input:checked {
     }
     .importantLogo{
         display: none;
+    }
+    .deleteSpan{
+        margin:5px
+    }
+    
+    .deleteAllBtn{
+        background-color: red;
+        border-radius: 10px;
+        color: white;
+        font-size: 13px;
+        padding: 3px 6px;
     }
 }
 
