@@ -2,6 +2,8 @@ Hello all, welcome to my git repo!!
 
 React & Redux Multifunctionality Todo app with fullyresponsive and attractive UI !!!
 
+https://user-images.githubusercontent.com/75027034/192147608-349ce1e5-116d-44db-8c82-1329c781a50f.jpeg
+
 This project is a simple React and Redux app which is best for beginners, If you are a beginner, this will be very helpful.
 It consist of Basic React and Redux concepts so before starting with it ensure that you have atleast some idea about React and Redux combination.
 If you don't know the concept of React Context api please learn that before and after completing that Please continue with this project.
